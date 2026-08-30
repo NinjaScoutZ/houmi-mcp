@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+.env
+.venv
+env/
+venv/
+.agents/diagrams/*.svg
+.agents/LEDGER.md
+.agents/backend_requirements.md
+.agents/grill_log.md
