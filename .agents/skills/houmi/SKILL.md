@@ -15,6 +15,30 @@ Single entry-point. Detects what the task needs and activates the right subsyste
 5. If refactor/rename → auto-check blast radius via `houmi_graft_intel.callers`.
 6. Always auto-grill on finish via `houmi_stack_grill`.
 
+## Plan Quality Standard (Mandatory for /plan and /ultradeep)
+
+When creating plans or modifying files, ALWAYS follow this standard:
+
+### For Every [MODIFY] Section:
+1. **Current State** — Read and cite the actual code (file:line). Never guess.
+2. **What Changes** — Show before→after diff or exact additions/deletions.
+3. **Why** — Explain the reason. What breaks without this change?
+4. **Blast Radius** — List every file that imports/uses the changed symbol.
+
+### Anti-Patterns (NEVER DO):
+- ❌ "Ensure X is supported" without reading if X already exists
+- ❌ "Add rotation support" without checking `rotation_deg` already exists at L28
+- ❌ One-liner [MODIFY] sections with no context
+- ❌ Proposing new fields without checking `extra_metadata` for duplicates
+
+### Quality Gate:
+Before presenting a plan to the user, self-check:
+- Can a developer who never saw this codebase understand EXACTLY what to do from reading the plan alone?
+- Does every [MODIFY] section cite actual line numbers from `view_file`?
+- Are there machine-checkable acceptance tests for every LEDGER card?
+
+If the answer to any of these is NO, the plan is not ready. Go deeper.
+
 ## MCP Tool Reference
 All tools live on `ServerName="houmi-core"`:
 
